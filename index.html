@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AquaGuardian - Premium Water Conservation Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <div class="brand-icon">
+          <i class="fas fa-fish"></i>
+        </div>
+        <span class="brand-text">AquaGuardian</span>
+      </div>
+
+      <div class="nav-links">
+        <button class="nav-btn active" data-section="dashboard">
+          <i class="fas fa-home"></i>
+          <span>Dashboard</span>
+        </button>
+        <button class="nav-btn" data-section="statistics">
+          <i class="fas fa-chart-bar"></i>
+          <span>Statistics</span>
+        </button>
+        <button class="nav-btn" data-section="achievements">
+          <i class="fas fa-trophy"></i>
+          <span>Achievements</span>
+        </button>
+        <button class="nav-btn" data-section="family">
+          <i class="fas fa-users"></i>
+          <span>Family</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <!-- Dashboard Section -->
+      <section id="dashboard" class="section active">
+        <div class="dashboard-grid">
+          <!-- Enhanced Fish Tank -->
+          <div class="fish-tank-container">
+            <div class="glass-card fish-tank-card">
+              <div class="fish-wrapper">
+                <div
+                  id="fish"
+                  class="fish"
+                  title="Your virtual pet fish"
+                  tabindex="0"
+                >
+                  🐟
+                </div>
+                <div id="tankWater" class="tank-water"></div>
+              </div>
+              <div class="fish-info">
+                <input
+                  type="text"
+                  id="fishNameInput"
+                  placeholder="Name your fish"
+                  aria-label="Fish Name Input"
+                />
+                <label for="fishColorPicker">Choose fish color:</label>
+                <input
+                  type="color"
+                  id="fishColorPicker"
+                  value="#4FC3F7"
+                  aria-label="Fish Color Picker"
+                />
+                <button id="setFishBtn">Set Fish</button>
+                <p id="fishPersonality"></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Usage Breakdown -->
+          <div class="usage-breakdown card glass-card">
+            <h3>Water Usage Breakdown</h3>
+            <ul id="roomUsageList" class="usage-list"></ul>
+          </div>
+
+          <!-- Alerts -->
+          <div class="alerts card glass-card" aria-live="polite" role="alert">
+            <h3>Alerts & Notifications</h3>
+            <div id="alertList"></div>
+          </div>
+
+          <!-- Goals -->
+          <div class="goals card glass-card">
+            <h3>Your Goals</h3>
+            <ul id="goalList" class="goal-list"></ul>
+          </div>
+
+          <!-- Achievements -->
+          <div class="achievements card glass-card">
+            <h3>Achievements</h3>
+            <ul id="achievementList" class="achievement-list"></ul>
+          </div>
+
+          <!-- Family Leaderboard -->
+          <div class="family card glass-card">
+            <h3>Family Leaderboard</h3>
+            <ul id="familyList" class="family-list"></ul>
+          </div>
+
+          <!-- Tips -->
+          <div class="tips card glass-card">
+            <h3>Water Saving Tips</h3>
+            <ul id="tipsList" class="tips-list"></ul>
+          </div>
+
+          <!-- Challenges -->
+          <div class="challenges card glass-card">
+            <h3>Daily Challenges</h3>
+            <ul id="challengeList" class="challenge-list"></ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Other Sections (statistics, achievements, family) could be added here -->
+    </div>
+  </main>
+
+  <!-- AI Chatbot -->
+  <div id="chatbotContainer" class="chatbot-container">
+    <button id="chatbotToggle" aria-label="Toggle chat">
+      💧 Chat
+    </button>
+    <div id="chatWindow" class="chat-window hidden" role="dialog" aria-modal="true" aria-labelledby="chatTitle">
+      <h2 id="chatTitle">AquaBot</h2>
+      <div id="chatMessages" class="chat-messages" tabindex="0"></div>
+      <form id="chatForm" aria-label="Chat form">
+        <input
+          type="text"
+          id="chatInput"
+          placeholder="Ask me about saving water!"
+          autocomplete="off"
+          aria-required="true"
+        />
+        <button type="submit" aria-label="Send message">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
