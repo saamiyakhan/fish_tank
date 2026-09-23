@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FISHY Water Conservation App Design System */
+
+@layer base {
+  :root {
+    /* Aquatic Color Palette */
+    --background: 210 100% 97%;
+    --foreground: 210 50% 15%;
+
+    --card: 200 100% 98%;
+    --card-foreground: 210 50% 15%;
+
+    --popover: 200 100% 98%;
+    --popover-foreground: 210 50% 15%;
+
+    --primary: 195 100% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 185 25% 85%;
+    --secondary-foreground: 210 50% 15%;
+
+    --muted: 185 20% 92%;
+    --muted-foreground: 210 25% 45%;
+
+    --accent: 175 70% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 185 30% 85%;
+    --input: 185 30% 90%;
+    --ring: 195 100% 45%;
+
+    /* Aquatic Brand Colors */
+    --ocean-blue: 200 100% 45%;
+    --teal: 180 100% 35%;
+    --aqua: 185 85% 55%;
+    --seafoam: 160 60% 70%;
+    --coral: 15 85% 65%;
+    --deep-blue: 220 80% 25%;
+
+    /* Glassmorphism Effects */
+    --glass-bg: 200 100% 98% / 0.8;
+    --glass-border: 185 50% 80% / 0.3;
+    --glass-shadow: 200 50% 20% / 0.1;
+
+    /* Water Gradients */
+    --gradient-ocean: linear-gradient(135deg, hsl(200 100% 55%), hsl(180 100% 45%));
+    --gradient-aqua: linear-gradient(135deg, hsl(185 85% 65%), hsl(175 70% 55%));
+    --gradient-deep: linear-gradient(180deg, hsl(220 80% 35%), hsl(200 100% 25%));
+
+    /* Animation Variables */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-water: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark Aquatic Theme */
+    --background: 220 50% 8%;
+    --foreground: 185 30% 90%;
+
+    --card: 220 45% 12%;
+    --card-foreground: 185 30% 90%;
+
+    --popover: 220 45% 12%;
+    --popover-foreground: 185 30% 90%;
+
+    --primary: 185 85% 55%;
+    --primary-foreground: 220 50% 8%;
+
+    --secondary: 220 30% 18%;
+    --secondary-foreground: 185 30% 85%;
+
+    --muted: 220 25% 20%;
+    --muted-foreground: 185 15% 65%;
+
+    --accent: 175 70% 50%;
+    --accent-foreground: 220 50% 8%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 30% 20%;
+    --input: 220 30% 18%;
+    --ring: 185 85% 55%;
+
+    /* Dark Aquatic Colors */
+    --ocean-blue: 200 85% 40%;
+    --teal: 180 90% 30%;
+    --aqua: 185 75% 45%;
+    --seafoam: 160 50% 55%;
+    --coral: 15 75% 55%;
+    --deep-blue: 220 70% 15%;
+
+    /* Dark Glassmorphism */
+    --glass-bg: 220 45% 15% / 0.7;
+    --glass-border: 185 40% 30% / 0.3;
+    --glass-shadow: 220 50% 5% / 0.3;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-gradient-to-br from-background via-background to-blue-50 text-foreground;
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Components */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/30 shadow-lg;
+  }
+
+  .glass-dark {
+    @apply bg-slate-900/70 backdrop-blur-md border border-slate-700/50 shadow-xl;
+  }
+
+  /* Water Animation Effects */
+  .water-ripple {
+    @apply relative overflow-hidden;
+  }
+
+  .water-ripple::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: ripple 2s infinite;
+  }
+
+  @keyframes ripple {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+  }
+
+  /* Fish Tank Water Animation */
+  .water-level {
+    transition: var(--transition-water);
+    background: var(--gradient-aqua);
+  }
+
+  /* Tab Navigation */
+  .tab-active {
+    @apply bg-primary text-primary-foreground shadow-md;
+  }
+
+  .tab-inactive {
+    @apply bg-secondary/50 text-secondary-foreground hover:bg-secondary;
+  }
+}
+
+/* Water wave animation */
+@keyframes water-wave {
+  0% { background-position-x: 0%; }
+  100% { background-position-x: 100%; }
+}
+
+.animate-water-wave {
+  animation: water-wave 3s linear infinite;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  background-size: 200% 100%;
+}
+
+/* Bubble animation */
+@keyframes bubble-up {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-150%);
+    opacity: 0;
+  }
+}
+
+.animate-bubble {
+  animation: bubble-up 4s ease-in infinite;
+}
+
